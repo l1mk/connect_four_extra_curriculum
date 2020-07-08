@@ -2,22 +2,30 @@
  border: 1px solid;
  display: flex;
  flex-wrap: wrap;
- height: 120px;
- width: 140px;
+ height: 240px;
+ width: 280px;
+ margin: auto;
 }
 
 .grid div{
-    height: 20px;
-    width: 20px;
+    height: 40px;
+    width: 40px;
 }
 
 .player-one {
-    background-color: red;
-    border-radius: 10px;
+    background-image: url('images/a.png');
+    background-size: cover;
 }
 
 .player-two {
-    background-color:blue; 
-    border-radius: 10px;
+    background-image: url('images/b.png');
+    background-size: cover;
 }
 
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
