@@ -2,14 +2,14 @@
  border: 1px solid;
  display: flex;
  flex-wrap: wrap;
- height: 240px;
- width: 280px;
+ height: 480px;
+ width: 560px;
  margin: auto;
 }
 
 .grid div{
-    height: 40px;
-    width: 40px;
+    height: 80px;
+    width: 80px;
 }
 
 .player-one {
