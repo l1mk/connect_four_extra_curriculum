@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const squares = document.querySelectorAll('.grid div')
-    const result = document.querySelector('#score')
+    const result = document.querySelector('#result')
+    const top = document.querySelector('#top')
     const displayCurrentPlayer = document.querySelector('#current-player')
     const player = document.querySelector('#player')
     const resetBtn = document.querySelector('#reset')
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const instruction = document.querySelector('#instructions')
     let currentPlayer = 1;
     let click = 0
-    let topScore = 0
+    let topScore = 100
 
     for (let i = 0; i < squares.length; i++){
         let index = i;
@@ -77,19 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
         [8, 15, 22, 29], [9, 16, 23, 30], [10, 17, 24, 31], [11, 18, 25, 32], [12, 19, 26, 33], [13, 20, 27, 34]
         ];
         //now take the 4 values in earch winningArray & plug them into the squares values
-        for (let i=0; i < winningArrays.length; i++){
-            const square1 = squares[winningArrays[i][0]]
-            const square2 = squares[winningArrays[i][1]]
-            const square3 = squares[winningArrays[i][2]]
-            const square4 = squares[winningArrays[i][3]]
+        for (let y=0; y < winningArrays.length; y++){
+            const square1 = squares[winningArrays[y][0]];
+            const square2 = squares[winningArrays[y][1]];
+            const square3 = squares[winningArrays[y][2]];
+            const square4 = squares[winningArrays[y][3]];
         
         //check if the squares belong to player
-        if (square1.classList.contains('player-one') &&
+        if(square1.classList.contains('player-one') &&
             square2.classList.contains('player-one') &&
             square3.classList.contains('player-one') &&
             square4.classList.contains('player-one')) {
-                result.innerHTML = 'Player One Wins'
-                if (topScore < click){
+            result.innerHTML = 'Player One Wins'
+                if (topScore > click){
                     topScore = click
                     top.innerHTML = `Player 1 won in just ${topScore} turns`
                 }
@@ -99,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
             square2.classList.contains('player-two') &&
             square3.classList.contains('player-two') &&
             square4.classList.contains('player-two')) {
-                result.innerHTML = 'Player Two Wins'
-                if (topScore < click){
+            result.innerHTML = 'Player Two Wins'
+                if (topScore > click){
                     topScore = click
                     top.innerHTML = `Player 2 won in just ${topScore} turns`
                 }
