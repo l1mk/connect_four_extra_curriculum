@@ -6,15 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const player = document.querySelector('#player')
     const resetBtn = document.querySelector('#reset')
     let turn = document.querySelector('#turn')
+    const instBtn = document.querySelector('#inst-Btn')
+    const instruction = document.querySelector('#instructions')
     let currentPlayer = 1;
     let click = 0
+    let topScore = 0
 
     for (let i = 0; i < squares.length; i++){
         let index = i;
         squares[i].addEventListener('click', function(){
 
             if (squares[index + 7].classList.contains('taken')){
-                if (currentPlayer === 1) {
+                if ((squares[index].classList.contains('player-one')) || (squares[index].classList.contains('player-two'))){
+                    alert ('Position taken')
+                } else if (currentPlayer === 1) {
                     squares[index].classList.add('taken')
                     squares[index].classList.add('player-one')
                     currentPlayer = 2
@@ -25,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     player.classList.add('blue')
                     click ++
                     turn.innerHTML = click
+
                 } else if (currentPlayer === 2){
                     squares[index].classList.add('taken')
                     squares[index].classList.add('player-two')
@@ -71,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         [8, 15, 22, 29], [9, 16, 23, 30], [10, 17, 24, 31], [11, 18, 25, 32], [12, 19, 26, 33], [13, 20, 27, 34]
         ];
         //now take the 4 values in earch winningArray & plug them into the squares values
-
         for (let i=0; i < winningArrays.length; i++){
             const square1 = squares[winningArrays[i][0]]
             const square2 = squares[winningArrays[i][1]]
@@ -84,17 +89,35 @@ document.addEventListener('DOMContentLoaded', () => {
             square3.classList.contains('player-one') &&
             square4.classList.contains('player-one')) {
                 result.innerHTML = 'Player One Wins'
-                alert ('Player 1 Win - Game Over')
+                if (topScore < click){
+                    topScore = click
+                    top.innerHTML = `Player 1 won in just ${topScore} turns`
+                }
+                alert ('Game Over')
+
             } else if (square1.classList.contains('player-two') &&
             square2.classList.contains('player-two') &&
             square3.classList.contains('player-two') &&
             square4.classList.contains('player-two')) {
                 result.innerHTML = 'Player Two Wins'
-                alert ('Player 2 Win - Game Over')
+                if (topScore < click){
+                    topScore = click
+                    top.innerHTML = `Player 2 won in just ${topScore} turns`
+                }
+                alert ('Game Over')
             }
         }
     }
 
     squares.forEach(square => square.addEventListener('click', checkBoard))
     resetBtn.addEventListener('click', reset)
+    instBtn.addEventListener('click', () =>{
+        if (instBtn.innerHTML === 'Instructions'){
+         instBtn.innerHTML = 'Hide'
+         instruction.style.display = 'block'
+        } else if (instBtn.innerHTML === 'Hide'){
+         instBtn.innerHTML = 'Instructions'
+         instruction.style.display = 'none'  
+        }
+     })
 })

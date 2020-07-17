@@ -7,11 +7,19 @@
     <title>Connect 4</title>
 </head>
 <body>
-    <button id="reset">Reset</button>
-    <h3>The current Player is: <span id="player" class="red">Player </span><span id="current-player" class="red">1</span></h3>
-    <h3>Turns: <span id="turn">0</span></h3>
-    <h3><span id="score"></span></h3>
+    <div class="header">
+        <h1>Connect Four</h1>
+        <nav>Top Score: <span id="top">None</span></nav>
+    </div>
+    <h3>Current Player: </h3>
+    <span id="player" class="red">Player </span><span id="current-player" class="red">1</span>
+    <h3>Score: </h3><span id="result">0</span>
+    <h3>Turns: </h3>
+    <span id="turn">0</span>
 
+    <br>
+    <br>
+    <div class="border">
     <div class="grid">
         <div></div>
         <div></div>
@@ -63,6 +71,15 @@
         <div class="taken"></div>
         <div class="taken"></div>
     </div>
+</div>
+<br>
+<button id="reset">Reset</button>
+<button id="inst-Btn">Instructions</button>
+<div id="instructions">
+<p>
+Click on the board to place your Pokemon (minun or plusle), start from the bottom of the board, then is the other player turn to do the same, the game is won when one of the player is able to connect four pokemons nexts to each other
+</p>
+</div>
 
 </body>
 </html>
